@@ -1,6 +1,6 @@
 @extends('app')
 @section('content')
-@include('shared.title', array('titulo' => 'Editar Cliente'))
+@include('shared.titleindex', array('titulo' => 'Editar Cliente'))
 
 <div class="container-fluid">
     @if(isset($mensajes))
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="cli_telefono">Teléfono <label style="color:#FF0000";>*</label></label>
+                    <label for="cli_telefono">Teléfono </label>
                     @if(isset($datos->cli_telefono))
                         <input type="number" class="form-control" id="cli_telefono" name="cli_telefono" value="{{$datos->cli_telefono}}" required>
                     @else  
@@ -61,7 +61,7 @@
             </div>
             <div class="col"> 
                 <div class="form-group">
-                    <label for="cli_email">Email <label style="color:#FF0000";>*</label></label>
+                    <label for="cli_email">Email</label>
                     @if(isset($datos->cli_email))
                         <input type="input" class="form-control" id="cli_email" name="cli_email" value="{{$datos->cli_email}}" required>
                     @else  

@@ -21,3 +21,12 @@ Route::get('cliente/{id}/edit', 'ClienteController@edit');
 Route::get('cliente/{id}/destroy', 'ClienteController@destroy');
 Route::post('cliente/store', 'ClienteController@store');
 Route::post('cliente/update', 'ClienteController@update');
+
+//empleado
+Route::get('empleado', 'EmpleadoController@index');
+Route::get('empleado/create', 'EmpleadoController@create');
+Route::get('empleado/{id}/edit', 'EmpleadoController@edit');
+Route::get('empleado/{id}/destroy', 'EmpleadoController@destroy');
+Route::post('empleado/store', 'EmpleadoController@store');
+Route::post('empleado/update', 'EmpleadoController@update');
+Route::get('empleado/{id}/detalleEmpleado', 'EmpleadoController@detalleEmpleado');
