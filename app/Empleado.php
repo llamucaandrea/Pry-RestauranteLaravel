@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Model
 {
-    protected $table = 'empleados';
+    protected $table = 'empleado';
 	protected $primaryKey = 'emp_id';
-	protected $fillable = ['emp_nombre','emp_cedula','emp_direccion','emp_telefono','emp_email','emp_grado_estudios','emp_experiencia','emp_area_trabajo','emp_comentario','emp_foto','ref_per_id'];
-
+	protected $fillable = ['emp_nombre','emp_cedula','emp_direccion','emp_telefono','emp_email','emp_area_trabajo','emp_comentario','emp_foto'];
 	
 	public $timestamps = false;
 }

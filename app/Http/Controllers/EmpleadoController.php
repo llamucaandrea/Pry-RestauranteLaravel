@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Experiencia;
+use App\GradoEstudio;
+use App\ReferenciaPersonal;
 use App\Empleado;
 
 class EmpleadoController extends Controller
