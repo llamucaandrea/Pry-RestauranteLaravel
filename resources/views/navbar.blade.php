@@ -13,13 +13,13 @@
           <!--li class="active"><a href="{{url('cliente')}}">Empleado</a></li-->
           <li><a href="{{url('empleado')}}">Empleado</a></li>
           <li><a href="{{url('cliente')}}">Cliente</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="{{url('almuerzo')}}">Almuerzo</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#blog">Blog</a></li>
-          <li class="drop-down"><a href="">Drop Down</a>
+          <li class="drop-down"><a href="{{url('menu')}}">MENU</a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
+              <li><a href="{{url('menu')}}">MENU</a></li>
               <li class="drop-down"><a href="#">Drop Down 2</a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
