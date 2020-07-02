@@ -48,7 +48,6 @@ Route::post('menu/update', 'MenuController@update');
 
 //empleado
 Route::get('empleado', 'EmpleadoController@index');
-Route::get('empleado/datoEmpleado', 'EmpleadoController@getAcademico');
 Route::get('empleado/create', 'EmpleadoController@create');
 Route::get('empleado/{id}/edit', 'EmpleadoController@edit');
 Route::get('empleado/{id}/destroy', 'EmpleadoController@destroy');
@@ -56,4 +55,13 @@ Route::post('empleado/store', 'EmpleadoController@store');
 Route::post('empleado/update', 'EmpleadoController@update');
 Route::get('empleado/{id}/detalleEmpleado', 'EmpleadoController@detalleEmpleado');
 Route::post('empleado/gradoAcademico', 'EmpleadoController@createAcademico');
+Route::post('empleado/experiencia', 'EmpleadoController@createExperiencia');
+Route::post('empleado/referenciaPersonal', 'EmpleadoController@createReferencia');
 Route::post('empleado/datosEmpleado', 'EmpleadoController@createEmpleado');
+Route::get('empleado/datosExperiencia', 'EmpleadoController@createDatoExperiencia');
+Route::get('empleado/datosReferencia', 'EmpleadoController@createDatoReferencia');
+Route::get('empleado/datosCompletos', 'EmpleadoController@createFoto');
+Route::get('empleado/datoEmpleado', 'EmpleadoController@getEmpleado');
+Route::get('empleado/datoAcademico', 'EmpleadoController@getAcademico');
+Route::get('empleado/datoExperiencia', 'EmpleadoController@getExperiencia');
+Route::get('empleado/datoReferencia', 'EmpleadoController@getReferencia');

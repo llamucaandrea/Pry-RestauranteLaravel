@@ -88,23 +88,13 @@
                     @endif
                 </div>
             </div>
-        </div>
+        </div>        
         <div class="row">
             <div class="col">
-                <div class="form-group">
-                    <label class="col-md-4 control-label">Foto del empleado</label>
-                    <div class="form-group">
-                        <input type="file" class="form-control" name="emp_foto" >
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <a href="{{url('cliente')}}" class="btn btn-danger mb-2">Cancelar</a>
+                <a href="{{url('empleado')}}" class="btn btn-danger mb-2">Cancelar</a>
             </div>
             <div class="col" style="text-align: right;">
-                <button type="submit" class="btn btn-primary mb-2">Siguiente</button>
+                <button type="submit" class="btn btn-success mb-2">Siguiente</button>
             </div>
         </div>
     </form>

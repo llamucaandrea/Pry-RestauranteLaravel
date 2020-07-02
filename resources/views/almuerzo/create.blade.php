@@ -80,7 +80,7 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Foto del almuerzo <label style="color:#FF0000";>*</label></label>
                         <div class="form-group">
-                            <input type="file" class="form-control" name="alm_foto" >
+                            <input type="file" class="form-control" name="alm_foto" required>
                         </div>
                     </div>
                 </div>

@@ -61,57 +61,6 @@
     </br>
     </br>
     <h5 style="text-align: center;">ESTUDIOS ACADÉMICOS</h5>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar institución</button>
-
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Estudios Académicos</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{url('/empleado/gradoAcademico')}}" method="POST">
-                    <div class="modal-body" method="POST">
-                        <p><h5>Los campos con <label style="color:#FF0000";>*</label> son obligatorios</h5></p>
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <div class="container">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="gra_est_instituto">Institución<label style="color:#FF0000";>*</label></label>
-                                    <input type="input" class="form-control" id="gra_est_instituto" name="gra_est_instituto" placeholder="Nombre de la institución" required >
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="gra_est_año_estudio">Años de estudio<label style="color:#FF0000";>*</label></label>
-                                    <input type="input" class="form-control" id="gra_est_año_estudio" name="gra_est_año_estudio" placeholder="Años que estudio" required >
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="gra_est_estado">Estado de estudio<label style="color:#FF0000";>*</label></label>
-                                    <select type="input" class="form-control" id="gra_est_estado" name="gra_est_estado" required>
-                                        <option>SELECCIONE</option>
-                                        <option value="GRADUADO">GRADUADO</option>
-                                        <option value="EGRESADO">EGRESADO</option>
-                                        <option value="ABANDONADO">ABANDONADO</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    </br>
-    </br>
     <table class="table table-hover table-bordered results">
         <thead>
             <tr>
@@ -135,12 +84,101 @@
             @endif
         </tbody>   
     </table>
+    </br>
+    </br>
+    <h5 style="text-align: center;">EXPERIENCIA LABORAL</h5>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Agregar Experiencia</button>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Experiencia Laboral</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{url('/empleado/experiencia')}}" method="POST">
+                    <div class="modal-body" method="POST">
+                        <p><h5>Los campos con <label style="color:#FF0000";>*</label> son obligatorios</h5></p>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="container">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exp_empresa">Empresa<label style="color:#FF0000";>*</label></label>
+                                    <input type="input" class="form-control" id="exp_empresa" name="exp_empresa" placeholder="Nombre de la empresa de trabajo" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exp_tiempo">Tiempo de trabajo<label style="color:#FF0000";>*</label></label>
+                                    <input type="input" class="form-control" id="exp_tiempo" name="exp_tiempo" placeholder="Tiempo de trabajo" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exp_motivo_salida">Motivo de Salida<label style="color:#FF0000";>*</label></label>
+                                    <input type="input" class="form-control" id="exp_motivo_salida" name="exp_motivo_salida" placeholder="Motivo por el cuál dejo de trabajar" required>     
+                                </div>
+                            </div>                            
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="exp_estado_salida">Estado de Salida<label style="color:#FF0000";>*</label></label>
+                                    <select type="input" class="form-control" id="exp_estado_salida" name="exp_estado_salida" placeholder="PERIODO" required>
+                                        <option>SELECCIONE</option>
+                                        <option value="MUY MALO">MUY MALO</option>
+                                        <option value="MALO">MALO</option>
+                                        <option value="REGULAR">REGULAR</option>
+                                        <option value="BUENO">BUENO</option>
+                                        <option value="MUY BUENO">MUY BUENO</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </br>
+    </br>
+    <table class="table table-hover table-bordered results">
+        <thead>
+            <tr>
+                <th width="3px">No.</th>
+                <th width="120px">Empresa</th>
+                <th width="160px">Tiempo de Trabajo</th>
+                <th width="160px">Motivo de Salida</th>
+                <th width="200px">Estado de Salida</th>
+            </tr>
+        </thead>
+        <tbody >
+            <input type="hidden" value="{{$cont=1}}">
+            @if(isset($experiencia))
+                @foreach ($experiencia as $exp)
+                    <tr>                
+                        <td scope="row">{{$cont++}}</td>
+                        <td scope="row">{{$exp['exp_empresa']}}</td>  
+                        <td scope="row">{{$exp['exp_tiempo']}}</td>
+                        <td scope="row">{{$exp['exp_motivo_salida']}}</td>
+                        <td scope="row">{{$exp['exp_estado_salida']}}</td>  
+                    </tr>
+                @endforeach
+            @endif
+        </tbody>   
+    </table>
+    </br>
+    </br>
     <div class="row">
         <div class="col">
-            <a href="{{url('empleado/datoEmpleado')}}" class="btn btn-danger mb-2">Atrás</a>
+            <a href="{{url('empleado/datoAcademico')}}" class="btn btn-danger mb-2">Atrás</a>
         </div>
         <div class="col" style="text-align: right;">
-            <a href="{{url('empleado/datosExperiencia')}}" class="btn btn-success mb-2">Siguiente</a>
+            <a href="{{url('empleado/datosReferencia')}}" class="btn btn-success mb-2">Siguiente</a>
         </div>
     </div>
 </div>

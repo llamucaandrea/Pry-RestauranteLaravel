@@ -33,25 +33,32 @@
                 <th scope="row">Dirección</th>
                 <th scope="row">Teléfono</th>
                 <th scope="row">Email</th>
+                <th scope="row" style="width: 50px">Detalles</th>
                 <th scope="row" style="width: 50px">Acción</th>
             </tr>
         </thead>
         <tbody >
             <input type="hidden" value="{{$cont=1}}">
             @foreach ($empleado as $emp)
-            <tr>       
-                <td scope="row">{{$cont++}}</td>
-                <td scope="row">{{$emp->emp_cedula}}</td>  
-                <td scope="row">{{$emp->emp_nombre}}</td>
-                <td scope="row">{{$emp->emp_direccion}}</td>  
-                <td scope="row">{{$emp->emp_telefono}}</td>
-                <td scope="row">{{$emp->emp_email}}</td>
-                <td style="text-align: center;">
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{url('empleado/'.$emp->emp_id.'/detalleEmpleado')}}" class="btn btn-primary mb-2">Detalles</a>
-                    </div>
-                </td>
-            </tr>
+                <tr>       
+                    <td scope="row">{{$cont++}}</td>
+                    <td scope="row">{{$emp->emp_cedula}}</td>  
+                    <td scope="row">{{$emp->emp_nombre}}</td>
+                    <td scope="row">{{$emp->emp_direccion}}</td>  
+                    <td scope="row">{{$emp->emp_telefono}}</td>
+                    <td scope="row">{{$emp->emp_email}}</td>
+                    <td style="text-align: center;">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="{{url('empleado/'.$emp->emp_id.'/detalleEmpleado')}}" class="btn btn-dark mb-2">Detalles</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="{{url('empleado/'.$emp->emp_id.'/edit')}}" class="btn btn-primary mb-2"><span class="iconify" data-icon="et:edit" data-inline="false"></span></a>
+                            <a href="{{url('empleado/'.$emp->emp_id.'/destroy')}}" class="btn btn-danger mb-2"><span class="iconify" data-icon="bx:bx-x-circle" data-inline="false"></span></a>
+                        </div>
+                    </td>
+                </tr>
             @endforeach
         </tbody>   
     </table>
