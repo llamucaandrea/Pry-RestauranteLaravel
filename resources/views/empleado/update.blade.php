@@ -616,7 +616,7 @@
                 <a href="{{url('empleado')}}" class="btn btn-danger mb-2">Atrás</a>
             </div>
             <div class="col" style="text-align: right;">
-                <button type="submit" class="btn btn-primary mb-2">Finalizar</button>
+                <a href="{{url('empleado')}}" class="btn btn-primary mb-2">Finalizar</a>
             </div>
         </div>
 </div>
