@@ -271,11 +271,6 @@ class EmpleadoController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		//
-	}
-
 	public function getEmpleado()
 	{
 		$empleado=session('EMPLEADO');
@@ -333,7 +328,15 @@ class EmpleadoController extends Controller
 	 */
 	public function edit($id)
 	{
-		
+		$empleado = Empleado::find($id);
+		$estudio = GradoEstudio::where('emp_id',$id)->get();
+		$experiencia = Experiencia::where('emp_id',$id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$id)->get();
+		return view('empleado.update')
+			->with('datos', $empleado)
+			->with('estudio', $estudio)
+			->with('experiencia', $experiencia)
+			->with('referencia', $referencia);
 	}
 
 	/**
@@ -342,9 +345,157 @@ class EmpleadoController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Request $request)
+	public function updatePersonal(Request $request)
 	{
-		  
+		$empleado = Empleado::find($request['emp_id']); 
+		$empleado->fill($request->all());
+		$empleado->save();
+		$datos = Empleado::where('emp_id',$empleado->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$empleado->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$empleado->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$empleado->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia'));  
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updateAcademico(Request $request)
+	{
+		$estudio = GradoEstudio::find($request['gra_est_id']); 
+		$estudio->fill($request->all());
+		$estudio->save();
+		$datos = Empleado::where('emp_id',$estudio->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia'));  
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updateExperiencia(Request $request)
+	{
+		$experiencia = Experiencia::find($request['exp_id']); 
+		$experiencia->fill($request->all());
+		$experiencia->save();
+		$datos = Empleado::where('emp_id',$experiencia->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia'));  
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updateReferencia(Request $request)
+	{
+		$referencia = ReferenciaPersonal::find($request['ref_per_id']); 
+		$referencia->fill($request->all());
+		$referencia->save();
+		$datos = Empleado::where('emp_id',$referencia->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia')); 
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updateFoto(Request $request)
+	{
+		if ($request->file('emp_foto')) {
+    		$file = $request->file('emp_foto');
+	    	$nombre_ima = 'empleado_' . time() . '.' . $file->getClientOriginalExtension();
+	    	$path = public_path().'/empleados/';
+	    	$file -> move($path, $nombre_ima);
+    	}
+		$foto = Empleado::find($request['emp_id']);
+		$nombre = collect([
+       		'emp_foto' => $nombre_ima      		
+       	]);      
+		$foto->fill($nombre->all());
+		$foto->save();
+		$datos = Empleado::where('emp_id',$request['emp_id'])->first();
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia')); 
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function storeAcademico(Request $request)
+	{
+		$empleado = Empleado::find($request['emp_id']); 
+		GradoEstudio::create([
+			'gra_est_instituto' => $request['gra_est_instituto'],
+			'gra_est_año_estudio' => $request['gra_est_año_estudio'],
+			'gra_est_estado' => $request['gra_est_estado'],
+			'emp_id' => $request['emp_id']
+		]);
+		$datos = Empleado::where('emp_id',$empleado->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$empleado->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$empleado->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$empleado->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia'));  
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function storeExperiencia(Request $request)
+	{
+		$empleado = Empleado::find($request['emp_id']); 
+		Experiencia::create([
+			'exp_empresa' => $request['exp_empresa'],
+			'exp_tiempo' => $request['exp_tiempo'],
+			'exp_motivo_salida' => $request['exp_motivo_salida'],
+			'exp_estado_salida' => $request['exp_estado_salida'],
+			'emp_id' => $request['emp_id']
+		]);
+		$datos = Empleado::where('emp_id',$empleado->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$empleado->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$empleado->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$empleado->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia'));  
+	}
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function storeReferencia(Request $request)
+	{
+		$empleado = Empleado::find($request['emp_id']); 
+		ReferenciaPersonal::create([
+			'ref_per_nombre' => $request['ref_per_nombre'],
+			'ref_per_telefono' => $request['ref_per_telefono'],
+			'ref_per_parentesco' => $request['ref_per_parentesco'],
+			'emp_id' => $request['emp_id']
+		]);
+		$datos = Empleado::where('emp_id',$empleado->emp_id)->first();
+		$estudio = GradoEstudio::where('emp_id',$empleado->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$empleado->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$empleado->emp_id)->get();	
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia'));  
 	}
 
 	/**
@@ -355,6 +506,61 @@ class EmpleadoController extends Controller
 	 */
 	public function destroy($id)
 	{
-		
+		$empleado = Empleado::find($id);
+		$estudio = GradoEstudio::where('emp_id',$id)->get();
+		$experiencia = Experiencia::where('emp_id',$id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$id)->get();
+        if(isset($estudio))
+		{
+			$estudio->each->delete();
+		}
+		if(isset($experiencia))
+		{
+			$experiencia->each->delete();
+		}	
+		if(isset($referencia))
+		{
+			$referencia->each->delete();
+		}		
+		Empleado::destroy($id);
+		return redirect('empleado')
+			->with('title', 'Empleado eliminado!')
+			->with('subtitle', 'La eliminación del empleado se ha realizado con éxito.');
+	}
+	public function destroyAcademico($id)
+	{
+		$estudio = GradoEstudio::find($id);		
+		$datos = Empleado::where('emp_id',$estudio->emp_id)->first();	 
+		GradoEstudio::destroy($id);
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia')) 
+			->with('title', 'Estudio Académico eliminado!')
+			->with('subtitle', 'La eliminación del estudio se ha realizado con éxito.');
+	}
+	public function destroyExperiencia($id)
+	{
+		$experiencia = Experiencia::find($id);		
+		$datos = Empleado::where('emp_id',$experiencia->emp_id)->first();	 
+		Experiencia::destroy($id);
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia')) 
+			->with('title', 'Experiencia eliminado!')
+			->with('subtitle', 'La eliminación de la experiencia se ha realizado con éxito.');
+	}
+	public function destroyReferencia($id)
+	{
+		$referencia = ReferenciaPersonal::find($id);		
+		$datos = Empleado::where('emp_id',$referencia->emp_id)->first();	 
+		ReferenciaPersonal::destroy($id);
+		$estudio = GradoEstudio::where('emp_id',$datos->emp_id)->get();
+		$experiencia = Experiencia::where('emp_id',$datos->emp_id)->get();
+		$referencia = ReferenciaPersonal::where('emp_id',$datos->emp_id)->get();
+		return view('empleado.update', compact('datos','estudio','experiencia','referencia')) 
+			->with('title', 'Referencia Personal eliminado!')
+			->with('subtitle', 'La eliminación de la Referencia Personal se ha realizado con éxito.');
 	}
 }

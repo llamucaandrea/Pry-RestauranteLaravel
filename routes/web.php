@@ -47,21 +47,45 @@ Route::post('menu/storeAlmuerzo', 'MenuController@storeAlmuerzo');
 Route::post('menu/update', 'MenuController@update');
 
 //empleado
+
+//index
 Route::get('empleado', 'EmpleadoController@index');
-Route::get('empleado/create', 'EmpleadoController@create');
-Route::get('empleado/{id}/edit', 'EmpleadoController@edit');
-Route::get('empleado/{id}/destroy', 'EmpleadoController@destroy');
-Route::post('empleado/store', 'EmpleadoController@store');
-Route::post('empleado/update', 'EmpleadoController@update');
 Route::get('empleado/{id}/detalleEmpleado', 'EmpleadoController@detalleEmpleado');
-Route::post('empleado/gradoAcademico', 'EmpleadoController@createAcademico');
-Route::post('empleado/experiencia', 'EmpleadoController@createExperiencia');
-Route::post('empleado/referenciaPersonal', 'EmpleadoController@createReferencia');
+//crearempleado
+Route::get('empleado/create', 'EmpleadoController@create');
+//crear datos personales
 Route::post('empleado/datosEmpleado', 'EmpleadoController@createEmpleado');
+//crear estudio
+Route::post('empleado/gradoAcademico', 'EmpleadoController@createAcademico');
+//crear experiencia
 Route::get('empleado/datosExperiencia', 'EmpleadoController@createDatoExperiencia');
+Route::post('empleado/experiencia', 'EmpleadoController@createExperiencia');
+//crear referencias
 Route::get('empleado/datosReferencia', 'EmpleadoController@createDatoReferencia');
+Route::post('empleado/referenciaPersonal', 'EmpleadoController@createReferencia');
+//crear foto empleado
 Route::get('empleado/datosCompletos', 'EmpleadoController@createFoto');
+//crear
+Route::post('empleado/store', 'EmpleadoController@store');
+//atras crear empleado
 Route::get('empleado/datoEmpleado', 'EmpleadoController@getEmpleado');
 Route::get('empleado/datoAcademico', 'EmpleadoController@getAcademico');
 Route::get('empleado/datoExperiencia', 'EmpleadoController@getExperiencia');
 Route::get('empleado/datoReferencia', 'EmpleadoController@getReferencia');
+//editar empleado
+Route::get('empleado/{id}/edit', 'EmpleadoController@edit');
+//modificar
+Route::post('empleado/updatePersonal', 'EmpleadoController@updatePersonal');
+Route::post('empleado/updateAcademico', 'EmpleadoController@updateAcademico');
+Route::post('empleado/updateExperiencia', 'EmpleadoController@updateExperiencia');
+Route::post('empleado/updateReferencia', 'EmpleadoController@updateReferencia');
+Route::post('empleado/updateFoto', 'EmpleadoController@updateFoto');
+//crear en editar
+Route::post('empleado/storeAcademico', 'EmpleadoController@storeAcademico');
+Route::post('empleado/storeExperiencia', 'EmpleadoController@storeExperiencia');
+Route::post('empleado/storeReferencia', 'EmpleadoController@storeReferencia');
+//eliminar
+Route::get('empleado/{id}/destroy', 'EmpleadoController@destroy');
+Route::get('empleado/{id}/destroyAcademico', 'EmpleadoController@destroyAcademico');
+Route::get('empleado/{id}/destroyExperiencia', 'EmpleadoController@destroyExperiencia');
+Route::get('empleado/{id}/destroyReferencia', 'EmpleadoController@destroyReferencia');

@@ -131,6 +131,12 @@
         <div class="col">
             <a href="{{url('empleado')}}" class="btn btn-danger mb-2">Atrás</a>
         </div>
+        <div class="col-sm-3">
+            <div style="text-align: right;">
+                <a href="{{url('empleado/'.$empleado->emp_id.'/edit')}}" class="btn btn-primary mb-2">Editar</a>
+                <a href="{{url('empleado/'.$empleado->emp_id.'/destroy')}}" class="btn btn-danger mb-2">Eliminar</a>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

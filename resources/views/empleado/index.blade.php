@@ -49,7 +49,7 @@
                     <td scope="row">{{$emp->emp_email}}</td>
                     <td style="text-align: center;">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{url('empleado/'.$emp->emp_id.'/detalleEmpleado')}}" class="btn btn-dark mb-2">Detalles</a>
+                            <a href="{{url('empleado/'.$emp->emp_id.'/detalleEmpleado')}}" class="btn btn-dark mb-2"><span class="iconify" data-icon="ion:arrow-redo" data-inline="false"></span></a>
                         </div>
                     </td>
                     <td>

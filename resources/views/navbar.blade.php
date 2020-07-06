@@ -14,10 +14,8 @@
           <li><a href="{{url('empleado')}}">Empleado</a></li>
           <li><a href="{{url('cliente')}}">Cliente</a></li>
           <li><a href="{{url('almuerzo')}}">Almuerzo</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li class="drop-down"><a href="{{url('menu')}}">MENU</a>
+          <li><a href="{{url('menu')}}">MENU</a></li>
+          <li class="drop-down"><a href="{{url('menu')}}">REPORTES</a>
             <ul>
               <li><a href="{{url('menu')}}">MENU</a></li>
               <li class="drop-down"><a href="#">Drop Down 2</a>
