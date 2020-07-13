@@ -1,5 +1,20 @@
 @extends('app')
+
 @section('content')
+    @if (session('title') && session('subtitle'))
+  </br>
+  </br>
+  </br>
+  </br>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">{{ session('title') }}</h4>
+        <p>{{ session('subtitle') }}</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+    
 <!-- ======= Slider Section ======= -->
   <div id="home" class="slider-area">
     <div class="bend niceties preview-2">
@@ -85,5 +100,4 @@
       </div>
     </div>
   </div><!-- End Slider -->
-
 @endsection

@@ -49,7 +49,24 @@
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <a href="{{url('cliente/'.$cli->cli_id.'/edit')}}" class="btn btn-primary mb-2"><span class="iconify" data-icon="et:edit" data-inline="false"></span></a>
-                        <a href="{{url('cliente/'.$cli->cli_id.'/destroy')}}" class="btn btn-danger mb-2"><span class="iconify" data-icon="bx:bx-x-circle" data-inline="false"></span></a>
+                        <a id="go" data-toggle="modal" data-target="#confirm-delete" href="{{url('cliente/'.$cli->cli_id.'/destroy')}}" class="btn btn-danger mb-2"><span class="glyphicon glyphicon-trash iconify" data-icon="bx:bx-x-circle" data-inline="false"></span></a>
+                        <div class="modal fade" id="confirm-delete" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Eliminar registro</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <label>¿Estás seguro de eliminar el registro?</label>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-ok" data-dismiss="modal">Sí</button>
+                                        <a class="btn btn-danger" data-dismiss="modal">No
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </td>
             </tr>

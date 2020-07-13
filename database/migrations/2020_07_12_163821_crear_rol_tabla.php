@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CrearRolTabla extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
-            $table->increments('usu_id');
-            $table->string('usu_usuario')->unique();
-            $table->string('password');
+        Schema::create('rol', function (Blueprint $table) {
+            $table->increments('rol_id');
+            $table->string('rol_nombre');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        //
     }
 }

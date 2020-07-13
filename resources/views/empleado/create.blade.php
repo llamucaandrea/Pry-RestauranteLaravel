@@ -68,11 +68,42 @@
             </div>
             <div class="col"> 
                 <div class="form-group">
-                    <label for="emp_area_trabajo">Area de Trabajo <label style="color:#FF0000";>*</label></label>
-                    @if(isset($datos['emp_area_trabajo']))
-                        <input type="input" class="form-control" id="emp_area_trabajo" name="emp_area_trabajo" value="{{$datos['emp_area_trabajo']}}" required>
-                    @else  
-                        <input type="input" class="form-control" id="emp_area_trabajo" name="emp_area_trabajo" placeholder="Area de Trabajo del empleado" required>
+                    @if(isset($datos['emp_area_trabajo']))                     
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="emp_area_trabajo">Área de Trabajo<label style="color:#FF0000";>*</label></label>
+                                <select type="input" class="form-control" id="emp_area_trabajo" name="emp_area_trabajo" required>
+                                    <option>SELECCIONE</option>
+                                    @if($datos['emp_area_trabajo']=='COCINERO')
+                                        <option value="COCINERO" selected="{{$datos['emp_area_trabajo']}}">COCINERO</option>
+                                    @else                                    
+                                        <option value="COCINERO">COCINERO</option>
+                                    @endif         
+                                    @if($datos['emp_area_trabajo']=='MESERO')
+                                        <option value="MESERO" selected="{{$datos['emp_area_trabajo']}}">MESERO</option>
+                                    @else                                    
+                                        <option value="MESERO">MESERO</option>
+                                    @endif         
+                                    @if($datos['emp_area_trabajo']=='CAJERO')
+                                        <option value="CAJERO" selected="{{$datos['emp_area_trabajo']}}">CAJERO</option>
+                                    @else                                    
+                                        <option value="CAJERO">CAJERO</option>
+                                    @endif                   
+                                </select>
+                            </div>
+                        </div>
+                    @else                          
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="emp_area_trabajo">Área de Trabajo<label style="color:#FF0000";>*</label></label>
+                                <select type="input" class="form-control" id="emp_area_trabajo" name="emp_area_trabajo" required>
+                                    <option>SELECCIONE</option>
+                                    <option value="COCINERO">COCINERO</option>
+                                    <option value="MESERO">MESERO</option>
+                                    <option value="CAJERO">CAJERO</option>
+                                </select>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>

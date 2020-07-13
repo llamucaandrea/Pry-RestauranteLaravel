@@ -50,7 +50,11 @@
 
 <body data-spy="scroll" data-target="#navbar-example">
 
-
+  @if(isset($mensaje))
+      <div class="alert alert-warning">
+          {{ $mensaje }}
+      </div>
+  @endif  
   @include('navbar')
   @yield('content')
   

@@ -7,6 +7,9 @@ use App\Experiencia;
 use App\GradoEstudio;
 use App\ReferenciaPersonal;
 use App\Empleado;
+use App\Usuario;
+use App\Rol;
+use App\UsuarioRol;
 
 class EmpleadoController extends Controller
 {
@@ -216,6 +219,20 @@ class EmpleadoController extends Controller
 		$emp_id = Empleado::All();
 		$emp_id = $emp_id->last();
 		$emp_id = $emp_id->emp_id;
+		Usuario::create([
+			'usu_usuario' => $empleado['emp_email'],
+			'password' => bcrypt('123'),
+			'emp_id' => $emp_id
+		]);	
+		$usu_rol = Usuario::All();
+		$usu_rol = $usu_rol->last();
+		$usu_rol = $usu_rol->usu_id;
+		$rol_id = Rol::where('rol_nombre',$empleado['emp_area_trabajo'])->first();
+		UsuarioRol::create([
+			'usu_rol_estado' => 1,
+			'usu_id' => $usu_rol,
+			'rol_id' => $rol_id->rol_id
+		]);	
 		for($i=0;$i<count($estudio);$i++){
 			GradoEstudio::create([
 				'gra_est_instituto' => $estudio[$i]['gra_est_instituto'],

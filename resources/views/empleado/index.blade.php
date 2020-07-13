@@ -12,9 +12,9 @@
         </button>
     </div>
     @endif
-    @if(isset($mensajes))
+    @if(isset($mensaje))
         <div class="alert alert-warning">
-            {{ $mensajes }}
+            {{ $mensaje }}
         </div>
     @endif
     <div class="row">
